@@ -13,10 +13,27 @@ internal class Report {
         items!!.add(ReportItem("Second", 6.toFloat()))
     }
 
-    fun output() {
+    fun outputToPrinter() {
         val reportPrint = PrintReport()
         items?.let {
             reportPrint.output(it)
         }
+        println()
+    }
+
+    fun outputToFile() {
+        val reportPrint = FileReport()
+        items?.let {
+            reportPrint.output(it)
+        }
+        println()
+    }
+
+    fun outputToScreen() {
+        val reportPrint = ScreenReport()
+        items?.let {
+            reportPrint.output(it)
+        }
+        println()
     }
 }
