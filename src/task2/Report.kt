@@ -2,7 +2,7 @@ package task2
 
 import java.util.*
 
-internal class Report {
+internal class Report(private var outputReport: IReport) {
     private var items // Отчетные данные
             : MutableList<ReportItem>? = null
 
@@ -13,27 +13,9 @@ internal class Report {
         items!!.add(ReportItem("Second", 6.toFloat()))
     }
 
-    fun outputToPrinter() {
-        val reportPrint = PrintReport()
+    fun output() {
         items?.let {
-            reportPrint.output(it)
+            outputReport.output(it)
         }
-        println()
-    }
-
-    fun outputToFile() {
-        val reportPrint = FileReport()
-        items?.let {
-            reportPrint.output(it)
-        }
-        println()
-    }
-
-    fun outputToScreen() {
-        val reportPrint = ScreenReport()
-        items?.let {
-            reportPrint.output(it)
-        }
-        println()
     }
 }
